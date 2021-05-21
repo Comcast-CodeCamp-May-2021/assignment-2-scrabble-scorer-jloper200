@@ -83,15 +83,16 @@ function vowelBonusScore(word) {
 function scrabbleScore(word) {
   word = word.toUpperCase();
 	let letterPoints = 0;
- 
+//  console.log(newPointStructure);
 	for (let i = 0; i < word.length; i++) {
  
 	  for (const letterKey in newPointStructure) {
-      let points = newPointStructure[letterKey];
+
+      let points = [letterKey];
  
-		 if (newPointStructure[letterKey].includes(word[i])) {
+		 if (points.includes(word[i])) {
 			// letterPoints += `Points for '${word[i]}': ${pointValue}\n`;
-      letterPoints += Number(points[i]);
+      letterPoints += Number(newPointStructure[letterKey]);
 		 }
      
  
@@ -156,7 +157,7 @@ function transform(object) {
   let flippedValues = {};
   for (let points in object) {
     let letters = object[points];
-    for (let i = 0; i = letters.length; i++) {
+    for (let i = 0; i < letters.length; i++) {
       flippedValues[letters[i]] = points;
     }
   }
@@ -169,6 +170,7 @@ function runProgram() {
   // let word;
   // let score;
   // let scoringSelection;
+  // console.log("Did i break this?");
 
   let userWord = initialPrompt();
 
